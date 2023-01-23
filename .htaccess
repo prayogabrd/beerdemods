@@ -1,0 +1,20 @@
+# Indeks Direktori
+DirectoryIndex public.php _signup.php _signin.php error403.php
+
+# Jika error
+ErrorDocument 403 'Mau ngapain hayoo 🗿'
+ErrorDocument 404 'Salah akses mas 🗿. 404'
+ErrorDocument 500 'Kesalahan data :) 500'
+
+
+# Gunakan RewriteEngine
+RewriteEngine On
+
+# Jika masih http, gunakan https
+# RewriteCond %{HTTP:X-Forwarded-Proto} !https [OR]
+# RewriteCond %{HTTPS} off
+# RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Hilangkan parameter i pada url
+RewriteCond %{QUERY_STRING} ^(.*)&?i=[^&]+&?(.*)$ [NC]
+RewriteRule ^/?(.*)$ /$1?%1%2 [R=301,L]
