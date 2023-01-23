@@ -158,7 +158,7 @@ $user_cc = $_COOKIE["user_cc"];
                 <div class="px-2 py-2">
                   <form action="" method="POST" name="profile-change">
                     <div class="position-relative mb-3">
-                      <div class="ratio ratio-1x1 full-icon" style="background-image: url('<?= (isset($user_account[0]) && $user_account[0]["user_profile"] != "-" ? $user_account[0]["user_profile"] : "../assets/img/user_icon.png") ?>');"></div>
+                      <div class="photo-profile ratio ratio-1x1 full-icon" style="background-image: url('<?= (isset($user_account[0]) && $user_account[0]["user_profile"] != "-" ? $user_account[0]["user_profile"] : "../assets/img/user_icon.png") ?>');"></div>
                       <div class="w-100 h-100 position-absolute top-50 start-50 translate-middle">
                         <div class="position-relative bg-secondary opacity-50 hover-opacity-100 rounded-circle w-100 h-100">
                           <span class="d-inline-block text-light position-absolute top-50 start-50 translate-middle text-center">
