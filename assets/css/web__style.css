@@ -1,1 +1,142 @@
+/*Style all elements*/
+* {
+  transition: 0.5s all;
+  font-family: 'Lato', sans-serif;
+}
 
+/*Styling according to each class*/
+.min-h-100 {
+  min-height: 100%;
+} .bg-custom-hex313131 {
+  background-color: #313131;
+} .bg-custom-hex000000 {
+  background-color: #000 !important;
+} .bg-custom-hex1C2021 {
+  background-color: #1C2021;
+} .bg-blur-10px {
+  backdrop-filter: blur(10px);
+} .wh-30px {
+  width: 30px;
+  height: 30px;
+} .full-icon {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+} .rotate-90deg {
+  transform: rotate(90deg);
+} .font-ubuntu-500 {
+  font-family: 'Ubuntu', sans-serif;
+} .h-100vh {
+  height: 100vh;
+} .bg-hide-tr {
+  background: linear-gradient(to right top, #313131, #313131cf);
+} .bg-hide-br {
+  background: linear-gradient(to right bottom, #313131, #313131cf);
+} .bg-delete-br {
+  background: linear-gradient(to bottom, #313131cf, #0000);
+} .pt-4rem {
+  padding-top: 4rem;
+} .pt-5rem {
+  padding-top: 5rem;
+} .pt-6rem {
+  padding-top: 6rem;
+} .h-150px {
+  height: 150px;
+} .bg-hide-top {
+  background: linear-gradient(to top, #303030, #0000);
+} .font-poppins {
+  font-family: 'Poppins', sans-serif;
+} .text-hex00bcb4 {
+  color: #00bcb4 !important;
+} .account-manager, .tooltip-custom {
+  --bs-tooltip-bg: #272727;
+} .bg-hex00bcb4 {
+  background-color: #00bcb4;
+} .icon-size-auto {
+  font-size: calc(2.625rem + 4.5vw);
+  font-weight: 300;
+  line-height: 1.2;
+} .cfs-auto {
+  font-size: 27.76px;
+} .h-100px {
+  height: 100px !important;
+} .input-custom {
+  background-color: #212529 !important;
+  color: #ffffff !important;
+  border: 0;
+  box-shadow: none !important;
+  padding-bottom: 0;
+} .h-1k2px {
+  height: 1.2px !important;
+} .bg-custom-hex00bcb4 {
+  background-color: #00bcb4;
+} .contact-icon {
+  width: 40px;
+  height: 40px;
+} .contact-icon i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} .bg-custom-hex5865F2 {
+  background-color: #5865F2 !important;
+} .bg-custom-hexFE0079 {
+  background-color: #FE0079 !important;
+} .submit-form, .btn-outline-signout {
+  --bs-btn-color: #00bcb4;
+  --bs-btn-border-color: #00bcb4;
+  --bs-btn-active-bg: #00bcb4;
+  --bs-btn-active-border-color: #00bcb4;
+  --bs-btn-hover-bg: #00bcb4;
+  --bs-btn-hover-border-color: #00bcb4;
+} .btn-outline-start {
+  --bs-btn-color: rgb(33, 37, 41);
+  --bs-btn-bg: #00bcb4;
+  --bs-btn-border-color: #00bcb400;
+  --bs-btn-active-bg: var(--bs-bg-transparent);
+  --bs-btn-active-color: #00bcb4;
+  --bs-btn-active-border-color: #00bcb4;
+  --bs-btn-hover-bg: var(--bs-bg-transparent);
+  --bs-btn-hover-color: #00bcb4;
+  --bs-btn-hover-border-color: #00bcb4;
+} .ptc-3 {
+  padding-top: 1rem;
+} .wh-50px {
+  width: 60px;
+  height: 60px;
+} .vrc {
+  align-self: stretch;
+  display: inline-block;
+  opacity: 0.25;
+  width: 1px;
+}
+
+/*Style for jumbotron elements*/
+#jumbotron {
+  background-image: url('../img/web__bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/*When opened on a tablet and so on*/
+@media (min-width: 768px) {
+  .icon-size-auto {
+    font-size: calc(1.375rem + 1.5vw);
+  } .cfs-auto {
+    font-size: 1.25rem;
+  } .ptc-3 {
+    padding-top: 1.5rem;
+  }
+}
+
+/*When opened on PC*/
+@media (min-width: 992px) {
+  .icon-size-auto {
+    font-size: calc(1.575rem + 3.9vw);
+  } .cfs-auto {
+    font-size: calc(1.3rem + 0.6vw);
+  } .ptc-3 {
+    padding-top: 3rem;
+  }
+}

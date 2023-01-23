@@ -1,0 +1,89 @@
+/*Style all elements*/
+* {
+  transition: 0.5s all;
+  font-family: 'Lato', sans-serif;
+}
+
+/*Styles for each class*/
+.min-h-100 {
+  min-height: 100vh;
+} .bg-custom-hex1C2021 {
+  background-color: #1C2021;
+} .wh-30px {
+  width: 30px;
+  height: 30px;
+} .full-icon {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+} .bg-custom-hex313131 {
+  background-color: #313131;
+} .rotate-90deg {
+  transform: rotate(90deg);
+} .font-ubuntu-500 {
+  font-family: 'Ubuntu', sans-serif;
+} .font-poppins {
+  font-family: 'Poppins', sans-serif;
+} .text-hex00bcb4 {
+  color: #00bcb4 !important;
+} .tooltip-custom {
+  --bs-tooltip-bg: #272727;
+} .pt-5rem {
+  padding-top: 5rem;
+} .input-custom {
+  background-color: #212529 !important;
+  color: #ffffff !important;
+  border: 0;
+  box-shadow: none !important;
+  padding-bottom: 0;
+} .h-1k2px {
+  height: 1.2px;
+} .bg-custom-hex00bcb4 {
+  background-color: #00bcb4;
+} .border-color-hex00bcb4 {
+  border-color: #00bcb4 !important;
+  box-shadow: none !important;
+} .border-color-hex00bcb4:checked {
+  background-color: #00bcb4;
+} .btn-submit-signin {
+  --bs-btn-color: #F8F9FA;
+  --bs-btn-border-color: #00bcb4;
+  --bs-btn-bg: #00bcb4;
+  --bs-btn-active-color: #00bcb4;
+  --bs-btn-active-border-color: #00bcb4;
+  --bs-btn-hover-color: #00bcb4;
+  --bs-btn-hover-border-color: #00bcb4;
+} .btn-submit-signup {
+  --bs-btn-color: #00bcb4;
+  --bs-btn-border-color: #00bcb4;
+  --bs-btn-active-bg: #00bcb4;
+  --bs-btn-active-border-color: #00bcb4;
+  --bs-btn-hover-bg: #00bcb4;
+  --bs-btn-hover-border-color: #00bcb4;
+} .ptc-3 {
+  padding-top: 1rem;
+} .wh-50px {
+  width: 60px;
+  height: 60px;
+} .vrc {
+  align-self: stretch;
+  display: inline-block;
+  opacity: 0.25;
+  width: 1px;
+} .notransition {
+  transition: none !important;
+}
+
+/*When opened on a tablet and so on*/
+@media (min-width: 768px) {
+  .ptc-3 {
+    padding-top: 1.5rem;
+  }
+}
+
+/*When opened on PC*/
+@media (min-width: 992px) {
+  .ptc-3 {
+    padding-top: 3rem;
+  }
+}

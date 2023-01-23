@@ -1,0 +1,82 @@
+/*Style all elements*/
+* {
+  transition: 0.5s all;
+  font-family: 'Lato', sans-serif;
+}
+
+/*Styling according to each class*/
+.min-h-100 {
+  min-height: 100vh;
+} .bg-custom-hex313131 {
+  background-color: #313131;
+} .bg-custom-hex1C2021 {
+  background-color: #1C2021;
+} .wh-30px {
+  width: 30px;
+  height: 30px;
+} .full-icon {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+} .font-ubuntu-500 {
+  font-family: 'Ubuntu', sans-serif;
+} .pt-5rem {
+  padding-top: 5rem;
+} .btn-outline-signout, .btn-outline-submit {
+  --bs-btn-color: #00bcb4;
+  --bs-btn-border-color: #00bcb4;
+  --bs-btn-active-bg: #00bcb4;
+  --bs-btn-active-border-color: #00bcb4;
+  --bs-btn-hover-bg: #00bcb4;
+  --bs-btn-hover-border-color: #00bcb4;
+} .font-poppins {
+  font-family: 'Poppins', sans-serif;
+} .tooltip-custom {
+  --bs-tooltip-bg: #272727;
+} .text-hex00bcb4 {
+  color: #00bcb4 !important;
+} .ptc-3 {
+  padding-top: 1rem;
+} .vrc {
+  align-self: stretch;
+  display: inline-block;
+  opacity: 0.25;
+  width: 1px;
+} .wh-50px {
+  width: 50px;
+  height: 50px;
+} .outline-none {
+  outline: none !important;
+} .cursor-cell {
+  cursor: cell;
+} .fs-custom {
+  font-size: 5.5rem;
+} .fs-text-custom {
+  font-size: 18px;
+} .notransition {
+  transition: none !important;
+} .text-shadow {
+  text-shadow: 0 0 3px #212121;
+}
+
+/*When opened on a tablet and so on*/
+@media (min-width: 768px) {
+  .ptc-3 {
+    padding-top: 1.5rem;
+  } .fs-custom {
+    font-size: 4rem;
+  } .fs-text-custom {
+    font-size: 15px;
+  }
+}
+
+/*When opened on PC*/
+@media (min-width: 992px) {
+  .ptc-3 {
+    padding-top: 3rem;
+  } .fs-custom {
+    font-size: 5.8rem;
+  } .fs-text-custom {
+    font-size: 20px;
+  }
+}
