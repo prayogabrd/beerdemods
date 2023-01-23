@@ -119,13 +119,28 @@ $(document).ready(() => {
           $('.loading-icon').removeClass('opacity-0');
           fetch(_del_profile)
             .then(result => result.json())
-            .then(() => {
+            .then(del => {
               $('.loading-icon').addClass('opacity-0');
               $('.del-icon').removeClass('opacity-0');
-              Toast.fire({
-                icon: 'success',
-                title: (_lang === 'ID' ? 'Berhasil menghapus profil!' : 'Successfully deleted profile!')
-              });
+              if (del.status === 0) {
+                Toast.fire({
+                  icon: 'question',
+                  iconColor: '#0000',
+                  iconHtml: '<i class="fa-regular fa-face-thinking opacity-100 text-warning"></i>',
+                  title: (_lang === 'ID' ? 'Apanya yang mau dihapus?' : 'What do you want to delete?')
+                });
+              } else {
+                Toast.fire({
+                  icon: (del.status === 1 ? 'success' : 'error'),
+                  title: (del.status === 1 ?
+                     (_lang === 'ID' ? 'Berhasil menghapus profil!' : 'Successfully deleted profile!') :
+                      (_lang === 'ID' ? 'Gagal menghapus profil!' : 'Failed to delete profile!')
+                    )
+                });
+                if (del.status === 1) {
+                  $('.photo-profile').css('background-image', 'url(\'../assets/img/user_icon.png\')');
+                }
+              }
             })
             .catch(() => {
               $('.loading-icon').addClass('opacity-0');
