@@ -178,23 +178,35 @@ $(document).ready(() => {
   
   // Ketika tombol keluar di tekan
   $('.btn-signout').on('click', () => {
-    fetch(_signout)
-      .then(result => result.json())
-      .then(() => {
-        Toast.fire({
-          icon: 'success',
-          title: (_lang == 'ID' ? 'Berhasil keluar!' : 'Made it out!'),
-          willClose: () => {
-            document.location.href = '';
-          }
-        });
-      })
-      .catch(() => {
-        Toast.fire({
-          icon: 'error',
-          title: (_lang == 'ID' ? 'Terjadi kesalahan!' : 'There is an error!')
-        });
-      });
+    Swal.fire({
+      icon: 'question',
+      title: (_lang === 'ID' ? 'Apakah anda yakin?' : 'Are you sure?'),
+      text: (_lang === 'ID' ? 'Anda akan keluar dari akun anda.' : 'You will be logged out of your account.'),
+      confirmButtonText: (_lang === 'ID' ? 'Ya, Keluar' : 'Yes, Sign Out'),
+      showCancelButton: true,
+      cancelButtonText: (_lang === 'ID' ? 'Batal' : 'Cancel'),
+      confirmButtonColor: '#dc3545'
+    }).then(where => {
+      if (where.isConfirmed) {
+        fetch(_signout)
+          .then(result => result.json())
+          .then(() => {
+            Toast.fire({
+              icon: 'success',
+              title: (_lang == 'ID' ? 'Berhasil keluar!' : 'Made it out!'),
+              willClose: () => {
+                document.location.href = '';
+              }
+            });
+          })
+          .catch(() => {
+            Toast.fire({
+              icon: 'error',
+              title: (_lang == 'ID' ? 'Terjadi kesalahan!' : 'There is an error!')
+            });
+          });
+      }
+    });
   });
   
   // When an action occurs on the message input
