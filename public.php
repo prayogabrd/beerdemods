@@ -187,7 +187,7 @@ $user_cc = $_COOKIE["user_cc"];
               <?php if (isset($user_account[0])): ?>
                 <div class="col-md-6">
                   <div class="px-3 pt-2">
-                    <button type="button" class="btn w-100 rounded-pill btn-outline-start p-3 fs-5 mb-3 btn-start"><?= $user_cc === "ID" ? "Mulai" : "Start" ?></button>
+                    <button type="button" class="btn w-100 rounded-pill border border-0 btn-outline-start p-3 fs-5 mb-3 btn-start"><?= $user_cc === "ID" ? "Mulai" : "Start" ?></button>
                   </div>
                 </div>
               <?php else: ?>
