@@ -4,6 +4,7 @@ ob_start();
 
 // Required
 require("../assets/php/.func__get_user_data.php");
+require("../assets/php/.func__upload_image.php");
 require("../assets/php/.mysql__funcs.php");
 
 // Check previous position
@@ -37,9 +38,48 @@ if (!isset($_COOKIE["user_ip"]) || !isset($_COOKIE["user_cc"])) {
 
 // Get user cc
 $user_cc = $_COOKIE["user_cc"];
+
+// Upload gambar
+if (isset($_FILES["profile"])) {
+  $image = $_FILES["profile"];
+  $validExs = ["jpg", "jpeg"];
+  $fileUpload = [
+    "status" => false,
+    "massage" => ($user_cc === "ID" ? "Gagal mengunggah gambar!" : "Failed to upload image!"),
+  ];
+  if ($image["error"] === 0 && $image["name"] != "" && $image["tmp_name"] != "") {
+    $arrayFileName = explode('.', $image["name"]);
+    $actExs = strtolower(end($arrayFileName));
+    if (in_array($actExs, $validExs)) {
+      if ($image["size"] <= 1000000) {
+        $file_data = [
+          "image" => base64_encode(file_get_contents($image["tmp_name"])),
+          "name" => uniqid().$actExs
+        ];
+        $data_result = upload_image($file_data, "0e5122db32bba1f171df7a922344cb0b");
+        if ($data_result != false && $data_result["success"] && $data_result["status"] == 200) {
+          mysqli_query($_conn, "UPDATE `account` SET `user_profile` = '".$data_result["data"]["thumb"]["url"]."' WHERE `user_id` = '".$user_account[0]["user_id"]."'");
+          if (mysqli_affected_rows($_conn) > 0) {
+            $fileUpload["status"] = true;
+            $fileUpload["massage"] = ($user_cc === "ID" ? "Berhasil mengubah foto profil!" : "Successfully changed profile photo!");
+          } else {
+            $fileUpload["massage"] = ($user_cc === "ID" ? "Gagal mengubah foto profil!" : "Failed to change profile photo!");
+          }
+        } else {
+          $fileUpload["massage"] = ($user_cc === "ID" ? "Terjadi kesalahan saat mengunggah gambar!" : "An error occurred while uploading the image!");
+        }
+      } else {
+        $fileUpload["massage"] = ($user_cc === "ID" ? "Pilih gambar dengan maksimal ukuran 1MB!" : "Choose an image with a maximum size of 1MB!");
+      }
+    } else {
+      $fileUpload["massage"] = ($user_cc === "ID" ? "Gunakan ekstensi gambar .jpg atau .jpeg!" : "Use the .jpg or .jpeg image extension!");
+    }
+  }
+  $_SESSION["uploaded_image"] = $fileUpload;
+}
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?= $user_cc === "ID" ? "id" : "en" ?>">
   <head>
     <meta name=”robots” content="noindex, nofollow" />
     <meta charset="UTF-8">
@@ -74,6 +114,7 @@ $user_cc = $_COOKIE["user_cc"];
       __data_signout_account="<?= base64_encode("../__use/_signout.php") ?>"
       __data_get_logined="<?= base64_encode("../__use/_logined.php") ?>"
       __data_del_profile="<?= base64_encode("../__use/_del_profile.php") ?>"
+      __data_get_uploaded_image = "<?= base64_encode("../__use/_get_uploaded_image.php") ?>"
     ></script>
     <script src="../assets/js/web__profile_sc.js"></script>
   </head>
@@ -156,12 +197,12 @@ $user_cc = $_COOKIE["user_cc"];
             <div class="clearfix">
               <div class="col-md-4 float-md-end">
                 <div class="px-2 py-2">
-                  <form action="" method="POST" name="profile-change">
+                  <form action="" method="POST" enctype="multipart/form-data" name="profile-change">
                     <div class="position-relative mb-3">
                       <div class="photo-profile ratio ratio-1x1 full-icon" style="background-image: url('<?= (isset($user_account[0]) && $user_account[0]["user_profile"] != "-" ? $user_account[0]["user_profile"] : "../assets/img/user_icon.png") ?>');"></div>
                       <div class="w-100 h-100 position-absolute top-50 start-50 translate-middle">
                         <div class="position-relative bg-secondary opacity-50 hover-opacity-100 rounded-circle w-100 h-100">
-                          <span class="d-inline-block text-light position-absolute top-50 start-50 translate-middle text-center">
+                          <span class="d-inline-block text-light position-absolute top-50 start-50 translate-middle text-center text-shadow">
                             <span class="d-block fs-custom">
                               <i class="box-icon fa-regular fa-box-open"></i>
                             </span>
@@ -170,7 +211,7 @@ $user_cc = $_COOKIE["user_cc"];
                             </span>
                           </span>
                         </div>
-                        <input type="file" accept="image/jpg, image/jpeg" name="profile" class="position-absolute top-50 start-50 translate-middle w-100 h-100 opacity-0 outline-none cursor-cell rounded-circle input-image" required />
+                        <input type="file" accept="image/jpeg" name="profile" class="position-absolute top-50 start-50 translate-middle w-100 h-100 opacity-0 outline-none cursor-cell rounded-circle input-image" required />
                       </div>
                     </div>
                     <div class="btn-group w-100" role="group">
