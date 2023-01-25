@@ -12,3 +12,5 @@ setcookie("user_pass", false, -1, "/");
 unset($_COOKIE["user_name"]);
 unset($_COOKIE["user_email"]);
 unset($_COOKIE["user_pass"]);
+
+echo(json_encode(["hehe"]));
