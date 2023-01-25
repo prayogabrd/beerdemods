@@ -90,15 +90,14 @@
   --bs-btn-hover-bg: #00bcb4;
   --bs-btn-hover-border-color: #00bcb4;
 } .btn-outline-start {
-  --bs-btn-color: rgb(33, 37, 41);
-  --bs-btn-bg: #00bcb4;
-  --bs-btn-border-color: #00bcb400;
-  --bs-btn-active-bg: var(--bs-bg-transparent);
-  --bs-btn-active-color: #00bcb4;
-  --bs-btn-active-border-color: #00bcb4;
-  --bs-btn-hover-bg: var(--bs-bg-transparent);
-  --bs-btn-hover-color: #00bcb4;
-  --bs-btn-hover-border-color: #00bcb4;
+  --custom-color-light: rgb(var(--bs-light-rgb));
+  --custom-color-black: rgb(var(--bs-black-rgb));
+  --bs-btn-bg: var(--custom-color-black);
+  --bs-btn-color: var(--custom-color-light);
+  --bs-btn-active-bg: var(--custom-color-light);
+  --bs-btn-active-color: var(--custom-color-black);
+  --bs-btn-hover-bg: var(--custom-color-light);
+  --bs-btn-hover-color: var(--custom-color-black);
 } .ptc-3 {
   padding-top: 1rem;
 } .wh-50px {
