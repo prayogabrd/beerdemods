@@ -31,8 +31,8 @@ function get_main_data() {
     (isset($_COOKIE["user_pass"]) && $_COOKIE["user_pass"] != "")
   ) {
     $data = [
-      "user_name" => $_COOKIE["user_name"],
-      "user_email" => $_COOKIE["user_email"],
+      "user_name" => strtolower(stripcslashes($_COOKIE["user_name"])),
+      "user_email" => strtolower(stripcslashes($_COOKIE["user_email"])),
       "user_pass" => $_COOKIE["user_pass"]
     ];
   } elseif (
@@ -41,8 +41,8 @@ function get_main_data() {
     (isset($_SESSION["user_pass"]) && $_SESSION["user_pass"] != "")
   ) {
     $data = [
-      "user_name" => $_SESSION["user_name"],
-      "user_email" => $_SESSION["user_email"],
+      "user_name" => strtolower(stripcslashes($_SESSION["user_name"])),
+      "user_email" => strtolower(stripcslashes($_SESSION["user_email"])),
       "user_pass" => $_SESSION["user_pass"]
     ];
   } else {
