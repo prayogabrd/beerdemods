@@ -6,8 +6,7 @@ header("Content-Type: application/json; charset=utf-8");
 require("../assets/php/.func__get_user_data.php");
 require("../assets/php/.mysql__funcs.php");
 
-// Ambil data dari fetch
-$input = json_decode(file_get_contents("php://input"), true);
+// Data result
 $result = [
   "status" => -1,
 ];
