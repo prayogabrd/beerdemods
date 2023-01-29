@@ -80,7 +80,7 @@ $(document).ready(() => {
     }
     
     // Actions on swipe note
-    if (document.documentElement.scrollTop > 480.5333251953125) {
+    if (document.documentElement.scrollTop > 470.5333251953125) {
       $('.swipe-down').addClass('opacity-0');
     } else {
       $('.swipe-down').removeClass('opacity-0');
@@ -264,4 +264,12 @@ $(document).ready(() => {
   
   // Footer
   $('.ph').css('height', $('.ch').css('height'));
+  
+  // hide loader
+  $('#loader').fadeOut();
+  
+  // Inisialisasi AOS
+  setTimeout(() => {
+    AOS.init();
+  }, 250);
 });
