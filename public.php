@@ -65,6 +65,9 @@ $user_cc = $_COOKIE["user_cc"];
     <!--SweetAlert2-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@5.0.15/dark.min.css" integrity="sha256-Dtn0fzAID6WRybYFj3UI5JDBy9kE2adX1xPUlW+B4XQ=" crossorigin="anonymous" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.0/dist/sweetalert2.min.js" integrity="sha256-1X1zUlVXzVybYb9gOcxg5DUgtS9faIHrdRprMphiF98=" crossorigin="anonymous"></script>
+    <!--AOS-->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <!--CSS-->
     <link rel="stylesheet" href="./assets/css/web__style.css" />
     <!--JQuery-->
@@ -84,7 +87,7 @@ $user_cc = $_COOKIE["user_cc"];
     ></script>
     <script src="./assets/js/web__sc.js"></script>
   </head>
-  <body class="min-h-100 bg-custom-hex1C2021" data-bs-spy="scroll" data-bs-target="#autoActive" data-bs-smooth-scroll="true">
+  <body class="min-h-100 bg-custom-hex1C2021 overflow-x-hidden" data-bs-spy="scroll" data-bs-target="#autoActive" data-bs-smooth-scroll="true">
     <!--If the browser doesn't support JavaScript-->
     <noscript>
       <?= ($user_cc === "ID" ? "Browser kamu tidak mendukung JavaScript. :(" : "Your browser does not support JavaScript. :(") ?>
@@ -176,7 +179,7 @@ $user_cc = $_COOKIE["user_cc"];
       <div class="w-100 h-150px bg-hide-top position-absolute bottom-0 text-light"></div>
       <div class="bg-hide-tr">
         <div class="container pt-4rem pb-5">
-          <div class="pt-5rem">
+          <div data-aos="fade-right" data-aos-anchor-placement="top-bottom" data-aos-duration="800" class="pt-5rem">
             <h1><span class="font-ubuntu-500 display-3 text-light typing"></span><span class="font-ubuntu-500 display-3 text-light">|</span></h1>
             <p class="pt-3 fs-5 text-light">
               <?= ($user_cc === "ID" ? "Temukan mod aplikasi yang Anda cari di sini." : "Find the application mod you are looking for here.") ?>
@@ -186,18 +189,18 @@ $user_cc = $_COOKIE["user_cc"];
             <div class="row">
               <?php if (isset($user_account[0])): ?>
                 <div class="col-md-6">
-                  <div class="px-3 pt-2">
+                  <div data-aos="zoom-in-right" data-aos-anchor-placement="top-bottom" data-aos-duration="800" class="px-3 pt-2">
                     <button type="button" class="btn w-100 rounded-pill border border-0 btn-outline-start p-3 fs-5 mb-3 btn-start"><?= $user_cc === "ID" ? "Mulai" : "Start" ?></button>
                   </div>
                 </div>
               <?php else: ?>
                 <div class="col-md-6">
-                  <div class="px-3">
+                  <div data-aos="zoom-in-right" data-aos-anchor-placement="top-bottom" data-aos-duration="800" class="px-3">
                     <button type="button" class="btn w-100 rounded-pill border border-0 bg-custom-hex000000 text-light p-3 fs-5 mb-3 btn-signin"><?= $user_cc === "ID" ? "Masuk" : "Sign In" ?></button>
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <div class="px-3">
+                  <div data-aos="zoom-in-left" data-aos-anchor-placement="top-bottom" data-aos-duration="800" class="px-3">
                     <button type="button" class="btn w-100 rounded-pill border border-0 bg-light p-3 fs-5 mb-3 btn-signup"><?= $user_cc === "ID" ? "Daftar" : "Sign Up" ?></button>
                   </div>
                 </div>
@@ -205,7 +208,7 @@ $user_cc = $_COOKIE["user_cc"];
             </div>
           </div>
           <div class="pt-6rem text-center text-light fs-5">
-            <div class="swipe-down fa-bounce d-inline-block">
+            <div data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom" data-aos-duration="800" class="swipe-down fa-bounce d-inline-block">
               <span class="d-block"><?= ($user_cc === "ID" ? "Geser ke bawah" : "Swipe down") ?></span>
               <span class="d-block"><i class="fa-regular fa-arrow-down"></i></span>
             </div>
@@ -218,12 +221,12 @@ $user_cc = $_COOKIE["user_cc"];
     <section>
       <div class="bg-hide-br">
         <div class="container pt-4rem pb-5">
-          <h2 class="font-ubuntu-500 display-5 text-light"><?= ($user_cc === "ID" ? "Untuk Anda" : "For You") ?></h2>
+          <h2 class="font-ubuntu-500 display-5 text-light" data-aos="fade-right" data-aos-anchor-placement="bottom-bottom" data-aos-duration="800"><?= ($user_cc === "ID" ? "Untuk Anda" : "For You") ?></h2>
           <div class="pt-5">
             <div class="row">
               <div class="col-lg-4">
                 <div class="px-2 pb-2">
-                  <div class="bg-custom-hex1C2021 text-light rounded p-2">
+                  <div data-aos="zoom-in-right" data-aos-anchor-placement="bottom-bottom" data-aos-duration="800" class="bg-custom-hex1C2021 text-light rounded p-2">
                     <span class="fs-6 font-poppins text-hex00bcb4 d-block">
                       <i class="fa-regular fa-hashtag"></i>
                       <?= ($user_cc === "ID" ? "Game Online Multiplayer" : "Multiplayer Online Games") ?>
@@ -233,7 +236,7 @@ $user_cc = $_COOKIE["user_cc"];
               </div>
               <div class="col-lg-4">
                 <div class="px-2 pb-2">
-                  <div class="bg-custom-hex1C2021 text-light rounded p-2">
+                  <div data-aos="zoom-in-up" data-aos-anchor-placement="bottom-bottom" data-aos-duration="800" class="bg-custom-hex1C2021 text-light rounded p-2">
                     <span class="fs-6 font-poppins text-hex00bcb4 d-block">
                       <i class="fa-regular fa-hashtag"></i>
                       <?= ($user_cc === "ID" ? "Aplikasi Pengedit" : "Editing Application") ?>
@@ -243,7 +246,7 @@ $user_cc = $_COOKIE["user_cc"];
               </div>
               <div class="col-lg-4">
                 <div class="px-2 pb-2">
-                  <div class="bg-custom-hex1C2021 text-light rounded p-2">
+                  <div data-aos="zoom-in-left" data-aos-anchor-placement="bottom-bottom" data-aos-duration="800" class="bg-custom-hex1C2021 text-light rounded p-2">
                     <span class="fs-6 font-poppins text-hex00bcb4 d-block">
                       <i class="fa-regular fa-hashtag"></i>
                       <?= ($user_cc === "ID" ? "Game Offline" : "Offline Games") ?>
@@ -258,7 +261,7 @@ $user_cc = $_COOKIE["user_cc"];
       <div class="bg-delete-br">
         <div class="container pt-4rem">
           <div class="px-2">
-            <div class="bg-dark rounded-top pt-3 pb-1 px-3">
+            <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="800" class="bg-dark rounded-top pt-3 pb-1 px-3">
               <span class="font-poppins fs-4 d-block text-hex00bcb4">
                 <?= ($user_cc === "ID" ? "Apa itu BeerdeMods?" : "What is BeerdeMods?") ?>
               </span>
@@ -277,7 +280,7 @@ $user_cc = $_COOKIE["user_cc"];
     <section id="about">
       <div class="container">
         <div class="px-2 pb-5">
-          <div class="bg-dark rounded-bottom pt-4rem pb-3 px-3 text-light">
+          <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="800" class="bg-dark rounded-bottom pt-4rem pb-3 px-3 text-light">
             <h2 class="font-ubuntu-500 display-5"><?= ($user_cc === "ID" ? "Tentang Kami" : "About Us") ?></h2>
             <p class="pt-4 fs-5">
               <span class="ms-2">
@@ -292,14 +295,14 @@ $user_cc = $_COOKIE["user_cc"];
     <!--Superiority-->
     <section id="superiority">
       <div class="container pt-4rem pb-5">
-        <h2 class="text-light display-5 font-ubuntu-500">
+        <h2 data-aos="fade-right" data-aos-anchor-placement="bottom-bottom" data-aos-duration="800" class="text-light display-5 font-ubuntu-500">
           <?= ($user_cc === "ID" ? "Keunggulan" : "Superiority") ?>
         </h2>
         <div class="pt-5">
           <div class="row">
             <div class="col-md-4">
               <div class="px-2 mb-2">
-                <div class="text-bg-dark rounded p-2">
+                <div data-aos="zoom-in-right" data-aos-anchor-placement="center-bottom" data-aos-duration="800" class="text-bg-dark rounded p-2">
                   <div class="p-2 position-relative">
                     <div class="ratio ratio-1x1">
                       <div class="w-100 h-100 bg-hex00bcb4 rounded-circle"></div>
@@ -321,7 +324,7 @@ $user_cc = $_COOKIE["user_cc"];
             </div>
             <div class="col-md-4">
               <div class="px-2 mb-2">
-                <div class="text-bg-dark rounded p-2">
+                <div data-aos="zoom-in-up" data-aos-anchor-placement="center-bottom" data-aos-duration="800" class="text-bg-dark rounded p-2">
                   <div class="p-2 position-relative">
                     <div class="ratio ratio-1x1">
                       <div class="w-100 h-100 bg-hex00bcb4 rounded-circle"></div>
@@ -343,7 +346,7 @@ $user_cc = $_COOKIE["user_cc"];
             </div>
             <div class="col-md-4">
               <div class="px-2 mb-2">
-                <div class="text-bg-dark rounded p-2">
+                <div data-aos="zoom-in-left" data-aos-anchor-placement="center-bottom" data-aos-duration="800" class="text-bg-dark rounded p-2">
                   <div class="p-2 position-relative">
                     <div class="ratio ratio-1x1">
                       <div class="w-100 h-100 bg-hex00bcb4 rounded-circle"></div>
@@ -371,14 +374,14 @@ $user_cc = $_COOKIE["user_cc"];
     <!--FAQ-->
     <section id="faq">
       <div class="container pt-4rem pb-5">
-        <h3 class="display-5 text-light font-ubuntu-500">
+        <h3 data-aos="fade-right" data-aos-anchor-placement="bottom-bottom" data-aos-duration="800" class="display-5 text-light font-ubuntu-500">
           <?= ($user_cc === "ID" ? "Pertanyaan yang Sering Diajukan" : "Frequently Asked Questions") ?>
         </h3>
         <div class="pt-5">
           <div class="row">
             <div class="col-md-4">
               <div class="px-2 pb-2">
-                <div class="p-2 text-bg-dark rounded">
+                <div data-aos="zoom-in-right" data-aos-anchor-placement="center-bottom" data-aos-duration="800" class="p-2 text-bg-dark rounded">
                   <h3 class="fs-4 font-poppins text-hex00bcb4">
                     <?= ($user_cc === "ID" ? "Apa itu mod?" : "What are mods?") ?>
                   </h3>
@@ -392,7 +395,7 @@ $user_cc = $_COOKIE["user_cc"];
             </div>
             <div class="col-md-4">
               <div class="px-2 pb-2">
-                <div class="p-2 text-bg-dark rounded">
+                <div data-aos="zoom-in-up" data-aos-anchor-placement="center-bottom" data-aos-duration="800" class="p-2 text-bg-dark rounded">
                   <h3 class="fs-4 font-poppins text-hex00bcb4">
                     <?= ($user_cc === "ID" ? "Apakah mod dan cheat itu sama?" : "Are mods and cheats the same?") ?>
                   </h3>
@@ -406,7 +409,7 @@ $user_cc = $_COOKIE["user_cc"];
             </div>
             <div class="col-md-4">
               <div class="px-2 pb-2">
-                <div class="p-2 text-bg-dark rounded">
+                <div data-aos="zoom-in-left" data-aos-anchor-placement="center-bottom" data-aos-duration="800" class="p-2 text-bg-dark rounded">
                   <h3 class="fs-4 font-poppins text-hex00bcb4">
                     <?= ($user_cc === "ID" ? "Apa kelebihan aplikasi mod?" : "What are the advantages of the mod application?") ?>
                   </h3>
@@ -426,14 +429,14 @@ $user_cc = $_COOKIE["user_cc"];
     <!--Member-->
     <section id="member">
       <div class="container pt-4rem pb-5">
-        <h2 class="display-5 text-light font-ubuntu-500">
+        <h2 data-aos="fade-right" data-aos-anchor-placement="bottom-bottom" data-aos-duration="800" class="display-5 text-light font-ubuntu-500">
           <?= ($user_cc === "ID" ? "Keanggotaan" : "Membership") ?>
         </h2>
         <div class="pt-4 px-2">
-          <div class="bg-hex00bcb4 rounded">
+          <div data-aos="zoom-in-up" data-aos-anchor-placement="bottom-bottom" data-aos-duration="800" class="bg-hex00bcb4 rounded">
             <iframe src="https://saweria.co/widgets/recent?streamKey=d5d0d7d433c34a61096f7ae3414acac7" width="100%" height="64px" allowtransparency="true" scrolling="no" frameborder="0" framespacing="0" class="bg-transparent m-0 p-0"></iframe>
           </div>
-          <div class="bg-dark rounded mt-3">
+          <div data-aos="zoom-in-up" data-aos-anchor-placement="center-bottom" data-aos-duration="800" class="bg-dark rounded mt-3">
             <iframe src="https://saweria.co/widgets/leaderboard?streamKey=d5d0d7d433c34a61096f7ae3414acac7" width="100%" height="450px" allowtransparency="true" frameborder="0" framespacing="0" class="bg-transparent m-0 p-0"></iframe>
           </div>
         </div>
@@ -443,13 +446,13 @@ $user_cc = $_COOKIE["user_cc"];
     <!--Contact-->
     <section id="contact">
       <div class="container pt-4rem pb-5">
-        <h2 class="display-5 text-light font-ubuntu-500">
+        <h2 data-aos="fade-right" data-aos-anchor-placement="bottom-bottom" data-aos-duration="800" class="display-5 text-light font-ubuntu-500">
           <?= ($user_cc === "ID" ? "Hubungi Kami" : "Contact Us") ?>
         </h2>
         <div class="pt-5">
           <div class="row justify-content-center">
             <div class="col-md-7">
-              <div class="px-2">
+              <div data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom" data-aos-duration="800" class="px-2">
                 <div class="text-bg-dark p-2 rounded position-relative save-height">
                   <form name="form-contact">
                     <div class="form-floating mb-2 pb-0">
@@ -526,7 +529,7 @@ $user_cc = $_COOKIE["user_cc"];
     </section>
     
     <!--Footer-->
-    <footer>
+    <footer data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="800">
       <div class="bg-custom-hex313131">
         <div class="container ptc-3">
           <div class="row">
@@ -595,6 +598,13 @@ $user_cc = $_COOKIE["user_cc"];
         </div>
       </div>
     </footer>
+    
+    <!--Loading-->
+    <div class="position-fixed top-0 bottom-0 start-0 end-0 bg-custom-hex1C2021" style="z-index: 9999; transition: none !important;" id="loader">
+      <div class="position-absolute top-50 start-50 translate-middle display-3">
+        <i class="fa-duotone fa-spinner-third fa-3x fa-spin text-hex00bcb4"></i>
+      </div>
+    </div>
     
     <!--Bootstrap JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
