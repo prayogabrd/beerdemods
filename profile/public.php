@@ -19,7 +19,7 @@ if ($_data != false) {
   $user_name = $_data["user_name"];
   $user_email = $_data["user_email"];
   $user_pass = $_data["user_pass"];
-  $user_account = mysqli_get_data("SELECT * FROM `account` WHERE `user_name` = '".$user_name."' AND `user_email` = '".$user_email."' AND `user_pass` = '".$user_pass."'");
+  $user_account = mysqli_get_data("SELECT * FROM `account` WHERE `user_name` = '$user_name' AND `user_email` = '$user_email' AND `user_pass` = '$user_pass'");
 }
 
 // Jika belum masuk
@@ -36,9 +36,9 @@ if (!isset($_COOKIE["user_ip"]) || !isset($_COOKIE["user_cc"])) {
   exit();
 }
 
-// Get user cc
+// Get user data
 $user_cc = $_COOKIE["user_cc"];
-
+$account = $user_account[0];
 // Upload gambar
 if (isset($_FILES["profile"])) {
   $image = $_FILES["profile"];
@@ -114,7 +114,11 @@ if (isset($_FILES["profile"])) {
       __data_signout_account="<?= base64_encode("../__use/_signout.php") ?>"
       __data_get_logined="<?= base64_encode("../__use/_logined.php") ?>"
       __data_del_profile="<?= base64_encode("../__use/_del_profile.php") ?>"
-      __data_get_uploaded_image = "<?= base64_encode("../__use/_get_uploaded_image.php") ?>"
+      __data_get_uploaded_image="<?= base64_encode("../__use/_get_uploaded_image.php") ?>"
+      __data_change_profile="<?= base64_encode("../__use/_change_profile.php") ?>"
+      __data_get_before_data="<?= base64_encode("../__use/_get_before_data.php") ?>"
+      __data__ludo_matching="<?= base64_encode("../__use/_ludo_matching.php") ?>"
+      __data_change_new="<?= base64_encode("../__use/_change_new.php") ?>"
     ></script>
     <script src="../assets/js/web__profile_sc.js"></script>
   </head>
@@ -235,8 +239,70 @@ if (isset($_FILES["profile"])) {
                 </div>
               </div>
               <div class="col-md-8">
-                <div class="px-2 py-2 pt-mb-0">
-                  
+                <div class="px-1 py-2 pt-md-0 pe-md-2">
+                  <form id="profileInfo">
+                    <div class="form-floating mb-2 pb-0">
+                      <input type="text" class="form-control input-custom" id="inputName" placeholder="<?= ($user_cc === "ID" ? "Nama kamu" : "Your name") ?>" required minlength="3" value="<?= $account["name"] ?>">
+                      <label for="inputName"><?= ($user_cc === "ID" ? "Nama" : "Name") ?></label>
+                      <div class="position-relative w-100">
+                        <div class="px-2 pb-2 w-100 position-absolute bottom-100">
+                          <div class="w-100 h-1k2px bg-custom-hex00bcb4"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-floating mb-2 pb-0">
+                      <input type="text" class="form-control input-custom" placeholder="Username" required readonly minlength="3" value="<?= $account["user_name"] ?>">
+                      <label>Username</label>
+                      <div class="position-relative w-100">
+                        <div class="px-2 pb-2 w-100 position-absolute bottom-100">
+                          <div class="w-100 h-1k2px bg-custom-hex00bcb4"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-floating mb-2 pb-0">
+                      <input type="text" class="form-control input-custom" id="inputEmail" placeholder="Email" required minlength="5" value="<?= $account["user_email"] ?>">
+                      <label for="inputEmail">Email</label>
+                      <div class="position-relative w-100">
+                        <div class="px-2 pb-2 w-100 position-absolute bottom-100">
+                          <div class="w-100 h-1k2px bg-custom-hex00bcb4"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-floating mb-2 pb-0">
+                      <input type="number" class="form-control input-custom" id="inputCall" placeholder="<?= ($user_cc === "ID" ? "Nomor telepon" : "Phone number") ?>" required minlength="7" maxlength="16" value="<?= $account["user_call"] ?>">
+                      <label for="inputCall"><?= ($user_cc === "ID" ? "Nomor telepon" : "Phone number") ?></label>
+                      <div class="position-relative w-100">
+                        <div class="px-2 pb-2 w-100 position-absolute bottom-100">
+                          <div class="w-100 h-1k2px bg-custom-hex00bcb4"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="p-2 clearfix">
+                      <div class="d-inline-block float-end pe-1">
+                        <button type="submit" class="btn btn-outline-save-change position-relative">
+                          <span class="submit-text notransition">
+                            <?= ($user_cc === "ID" ? "Simpan" : "Save") ?>
+                          </span>
+                          <span class="submit-load notransition position-absolute top-50 start-50 translate-middle opacity-0">
+                            <i class="fa-regular fa-spinner-third fa-spin notransition"></i>
+                          </span>
+                        </button>
+                      </div>
+                      <div class="d-inline-block ps-1">
+                        <button
+                          type="button"
+                          class="btn p-0 border border-0 fs-4 text-light"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="right"
+                          data-bs-html="true"
+                          data-bs-title="<?= ($user_cc === "ID" ? "Pengaturan" : "Settings") ?>"
+                          data-bs-custom-class="profile-settings"
+                        >
+                          <i class="fa-regular fa-gear"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
@@ -307,6 +373,65 @@ if (isset($_FILES["profile"])) {
         </div>
       </div>
     </footer>
+    
+    <!--Form edit kata sandi-->
+    <div class="position-fixed top-0 start-0 end-0 bottom-0 bg-custom-blur-10px notransition" style="display: none;" id="changePassword">
+      <div class="position-absolute top-50 start-50 translate-middle p-2 bg-dark shadow-sm rounded width-auto">
+        <form id="formpw" name="form-pw">
+          <div class="form-floating mb-2 pb-0">
+            <input type="password" name="old-pass" class="form-control input-custom" id="oldPassword" placeholder="<?= ($user_cc === "ID" ? "Kata Sandi Lama" : "Old Password") ?>" required minlength="8" autocomplete="off">
+            <label for="oldPassword"><?= ($user_cc === "ID" ? "Kata Sandi Lama" : "Old Password") ?></label>
+            <div class="position-relative w-100">
+              <div class="px-2 pb-2 w-100 position-absolute bottom-100">
+                <div class="w-100 h-1k2px bg-custom-hex00bcb4"></div>
+              </div>
+            </div>
+          </div>
+          <div class="form-floating mb-2 pb-0">
+            <input type="password" name="new-pass" class="form-control input-custom" id="newPassword" placeholder="<?= ($user_cc === "ID" ? "Kata Sandi Baru" : "New Password") ?>" required minlength="8" autocomplete="off">
+            <label for="newPassword"><?= ($user_cc === "ID" ? "Kata Sandi Baru" : "New Password") ?></label>
+            <div class="position-relative w-100">
+              <div class="px-2 pb-2 w-100 position-absolute bottom-100">
+                <div class="w-100 h-1k2px bg-custom-hex00bcb4"></div>
+              </div>
+            </div>
+          </div>
+          <div class="form-floating mb-2 pb-0">
+            <input type="password" name="confirm-new-pass" class="form-control input-custom" id="cnewPassword" placeholder="<?= ($user_cc === "ID" ? "Konfirmasi Kata Sandi Baru" : "Confirm New Password") ?>" required minlength="8" autocomplete="off">
+            <label for="cnewPassword"><?= ($user_cc === "ID" ? "Konfirmasi Kata Sandi Baru" : "Confirm New Password") ?></label>
+            <div class="position-relative w-100">
+              <div class="px-2 pb-2 w-100 position-absolute bottom-100">
+                <div class="w-100 h-1k2px bg-custom-hex00bcb4"></div>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix">
+            <div class="d-inline-block pe-2 pb-1 float-end">
+              <button type="submit" class="btn btn-outline-save-change position-relative">
+                <span class="save-pw-text notransition">
+                  <?= ($user_cc === "ID" ? "Simpan" : "Save") ?>
+                </span>
+                <span class="save-pw-load notransition position-absolute top-50 start-50 translate-middle opacity-0">
+                  <i class="fa-regular fa-spinner-third fa-spin notransition"></i>
+                </span>
+              </button>
+            </div>
+          </div>
+        </form>
+        <div class="d-inline-block shadow-sm wh-30px fsc-15px position-absolute top-0 start-100 translate-middle bg-dark rounded-circle text-light" hide="changePassword">
+          <span class="position-absolute top-50 start-50 translate-middle">
+            <i class="fa-solid fa-xmark-large"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    <!--Loading-->
+    <div class="position-fixed top-0 bottom-0 start-0 end-0 bg-custom-hex1C2021" style="z-index: 9999; transition: none !important;" id="loader">
+      <div class="position-absolute top-50 start-50 translate-middle display-3">
+        <i class="fa-duotone fa-spinner-third fa-3x fa-spin text-hex00bcb4"></i>
+      </div>
+    </div>
     
     <!--Bootstrap JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
