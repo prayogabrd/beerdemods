@@ -313,6 +313,13 @@ if ($_data != false) {
         </div>
       </footer>
       
+      <!--Loading-->
+      <div class="position-fixed top-0 bottom-0 start-0 end-0 bg-custom-hex1C2021" style="z-index: 9999; transition: none !important;" id="loader">
+        <div class="position-absolute top-50 start-50 translate-middle display-3">
+          <i class="fa-duotone fa-spinner-third fa-3x fa-spin text-hex00bcb4"></i>
+        </div>
+      </div>
+      
       <!--Bootstrap JS-->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     </body>
