@@ -57,4 +57,7 @@ $(document).ready(() => {
   // Fix Footer
   $('#fixFooter').css('height', $('#myFooter').css('height'));
   $('.ph').css('height', $('.ch').css('height'));
+  
+  // hide loader
+  $('#loader').fadeOut();
 });
